@@ -1,29 +1,54 @@
-function realizarCalculo(operacion) {
-  let num1 = Number(prompt("Ingrese el primer número:"));
-  let num2 = Number(prompt("Ingrese el segundo número:"));
+let carrito = [];
 
-  let resultado;
+function agregarProducto() {
+  let producto = prompt("Ingrese el nombre del producto:");
+  let precio = parseFloat(prompt("Ingrese el precio del producto:"));
+  let cantidad = parseInt(prompt("Ingrese la cantidad del producto:"));
 
-  switch (operacion) {
-    case 'suma':
-      resultado = num1 + num2;
-      break;
-    case 'resta':
-      resultado = num1 - num2;
-      break;
-    case 'concatenar':
-      resultado = num1.toString() + num2.toString();
-      break;
-    case 'division':
-      resultado = num1 / num2;
-      break;
-    case 'porcentaje':
-      resultado = (num1 * num2) / 100;
-      break;
-    default:
-      alert("Operación no válida.");
-      return;
+  let nuevoProducto = {
+    nombre: producto,
+    precio: precio,
+    cantidad: cantidad
+  };
+
+  carrito.push(nuevoProducto);
+
+  alert(`${cantidad} ${producto}(s) ha(n) sido agregado(s) al carrito.`);
+}
+
+function eliminarProducto() {
+  let indice = parseInt(prompt("Ingrese el número de índice del producto a eliminar:"));
+
+  if (indice >= 1 && indice <= carrito.length) {
+    let productoEliminado = carrito.splice(indice - 1, 1);
+    alert(`${productoEliminado[0].nombre} ha sido eliminado del carrito.`);
+  } else {
+    alert("Índice inválido.");
+  }
+}
+
+function verCarrito() {
+  console.log("Productos en el carrito:");
+
+  carrito.forEach((producto, index) => {
+    console.log(`${index + 1}. ${producto.nombre} - Precio: ${producto.precio} - Cantidad: ${producto.cantidad}`);
+  });
+}
+
+function calcularTotal() {
+  let subtotal = 0;
+
+  carrito.forEach((producto) => {
+    subtotal += producto.precio * producto.cantidad;
+  });
+
+  let descuento = 0;
+
+  if (subtotal > 100) {
+    descuento = subtotal * 0.1; // Aplica un descuento del 10% si el subtotal es mayor a 100
   }
 
-  alert(`El resultado de la operación "${operacion}" es: ${resultado}`);
+  let total = subtotal - descuento;
+
+  alert(`Subtotal: $${subtotal.toFixed(2)}\nDescuento: $${descuento.toFixed(2)}\nTotal: $${total.toFixed(2)}`);
 }
