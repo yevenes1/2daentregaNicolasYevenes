@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Calculadora de Edad</title>
-  <link rel="stylesheet" type="text/css" href="./css/styles.css">
+  <title>Calculadora</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-  <h1>Calculadora de Edad</h1>
+  <h1>Calculadora</h1>
   <div class="container">
-    <label for="nombre">Nombre:</label>
-    <input type="text" id="nombre">
+    <label for="num1">Número 1:</label>
+    <input type="number" id="num1">
     <br>
-    <label for="añoNacimiento">Año de Nacimiento:</label>
-    <input type="number" id="añoNacimiento">
+    <label for="num2">Número 2:</label>
+    <input type="number" id="num2">
     <br>
-    <button onclick="calcularEdad()">Calcular</button>
+    <button onclick="realizarCalculo('suma')">Suma</button>
+    <button onclick="realizarCalculo('resta')">Resta</button>
+    <button onclick="realizarCalculo('concatenar')">Concatenar</button>
+    <button onclick="realizarCalculo('division')">División</button>
+    <button onclick="realizarCalculo('porcentaje')">Porcentaje</button>
   </div>
 
-  <script src="./js/script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
